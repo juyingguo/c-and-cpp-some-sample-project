@@ -1,8 +1,13 @@
-*.ipch
-*.sdf
 *.o
 *.exe
 /Debug
 /obj
 /bin
 
+#visual studio project ignore file 
+ipch/
+*.suo
+*.sdf
+*.opensdf
+Debug
+Release
