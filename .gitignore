@@ -9,5 +9,7 @@ ipch/
 *.suo
 *.sdf
 *.opensdf
+#qt project generate file : xxx.pro.user
+*.pro.user
 Debug
 Release
