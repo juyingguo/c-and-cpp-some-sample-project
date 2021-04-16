@@ -167,8 +167,8 @@ CString CConfigFile::GetItem(CString _strLoad)
 	for (int i = 0; i < _index; i++)
 	{
 		_temp[i] = _strLoad.GetAt(i);
+		_temp[i] = '\0';
 	}
-	_temp[i] = '\0';
 	CString _str = _temp;
 	return _str;
 }
@@ -191,8 +191,8 @@ CString CConfigFile::GetValue(CString _strLoad)
 	for (int i = _index; i < _strLoad.GetLength()-1; i++)	//³ýÈ¥"\r\n"
 	{
 		_temp[i-_index] = _strLoad.GetAt(i);
+		_temp[i-_index] = '\0';
 	}
-	_temp[i-_index] = '\0';
 	CString _str = _temp;
 	return _str;
 }
