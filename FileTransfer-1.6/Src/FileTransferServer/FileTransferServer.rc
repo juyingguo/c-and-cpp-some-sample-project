@@ -1,0 +1,241 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\FileTransferServer.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\FileTransferServer.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 91
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 FileTransferServer"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "FileTransferServer 1.6 版",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2010",IDC_STATIC,40,55,89,8
+    DEFPUSHBUTTON   "确定",IDOK,169,25,50,25,WS_GROUP
+    LTEXT           "作者：Yao",IDC_STATIC,40,33,103,8
+END
+
+IDD_FILETRANSFERSERVER_DIALOG DIALOGEX 0, 0, 398, 265
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "FileTransferServer"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "文件路径",IDC_STATIC,29,99,33,8
+    LTEXT           "",IDC_FILE_PATH,75,96,294,14,WS_BORDER
+    PUSHBUTTON      "...",IDC_BROWZER,320,115,50,14
+    LTEXT           "文件大小",IDC_STATIC,29,118,33,8
+    LTEXT           "",IDC_FILE_SIZE,75,115,103,14,WS_BORDER
+    LTEXT           "本机IP",IDC_STATIC,29,18,25,8
+    LTEXT           "",IDC_IP_ADDRESS,75,15,103,14,WS_BORDER
+    PUSHBUTTON      "开始传输",IDC_SEND,320,159,50,14
+    LTEXT           "",IDC_STATE,75,222,294,14,WS_BORDER
+    PUSHBUTTON      "关于",IDC_ABOUT,224,15,50,14
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",0x0,75,177,
+                    178,14
+    PUSHBUTTON      "中断传输",IDC_INTERRUPT,320,177,50,14
+    LTEXT           "",IDC_OFFSET,261,177,50,14,WS_BORDER
+    LTEXT           "本地状态",IDC_STATIC,29,225,33,8
+    GROUPBOX        "文件信息",IDC_STATIC,18,84,363,53
+    GROUPBOX        "状态信息",IDC_STATIC,18,206,363,43
+    LTEXT           "远程IP",IDC_STATIC,29,54,25,8
+    LTEXT           "",IDC_REMOTE_ADDR,75,51,103,14,WS_BORDER
+    GROUPBOX        "文件传输",IDC_STATIC,18,143,363,57
+    LTEXT           "传输进度",IDC_STATIC,29,180,33,8
+    PUSHBUTTON      "帮助",IDC_LOAD_HELP,320,15,50,14
+    GROUPBOX        "连接信息",IDC_STATIC,18,38,363,36
+    PUSHBUTTON      "断开连接",IDC_CLOSE_CONNECT,320,51,50,14
+    LTEXT           "传输速度",IDC_STATIC,29,162,33,8
+    LTEXT           "",IDC_SPEED,75,159,50,14,WS_BORDER
+    LTEXT           "剩余时间",IDC_STATIC,141,162,33,8
+    LTEXT           "",IDC_REMAINED_TIME,183,159,69,14,WS_BORDER
+    LTEXT           "( 时:分:秒 )",IDC_STATIC,262,162,49,8
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "FileTransferServer Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "FileTransferServer\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2010\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "FileTransferServer.EXE\0"
+            VALUE "ProductName", "FileTransferServer 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 84
+    END
+
+    IDD_FILETRANSFERSERVER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 391
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 258
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// 24
+//
+
+1                       24      MOVEABLE PURE   "XPStyle.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 FileTransferServer(&A)..."
+END
+
+#endif    // Chinese (中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\FileTransferServer.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

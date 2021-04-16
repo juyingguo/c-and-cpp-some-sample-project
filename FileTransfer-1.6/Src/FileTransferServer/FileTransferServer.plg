@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FileTransferServer - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP40E.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/FileTransferServer.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Project\FileTransfer\Src\Protocol\Model\ServerModel.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP40E.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP40F.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/FileTransferServer.pdb" /machine:I386 /out:"Release/FileTransferServer.exe" 
+.\Release\ConfigFile.obj
+.\Release\Control.obj
+.\Release\FileModel.obj
+.\Release\FileReadModel.obj
+.\Release\FileTransferServer.obj
+.\Release\FileTransferServerDlg.obj
+.\Release\Format.obj
+.\Release\Model.obj
+.\Release\ServerControl.obj
+.\Release\ServerModel.obj
+.\Release\StdAfx.obj
+.\Release\Tray.obj
+.\Release\ValidJudge.obj
+.\Release\FileTransferServer.res
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP40F.tmp"
+<h3>Output Window</h3>
+Compiling...
+ServerModel.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+FileTransferServer.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

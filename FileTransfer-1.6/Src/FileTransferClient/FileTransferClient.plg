@@ -1,0 +1,97 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FileTransferClient - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/FileTransferClient.res" /d "_DEBUG" /d "_AFXDLL" "D:\Project\FileTransfer\Src\FileTransferClient\FileTransferClient.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP589.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/FileTransferClient.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Project\FileTransfer\Src\FileTransferClient\ClientControl.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\ClientModel.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\ConfigFile.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\Control.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\FileModel.cpp"
+"D:\Project\FileTransfer\Src\FileTransferClient\FileTransferClient.cpp"
+"D:\Project\FileTransfer\Src\FileTransferClient\FileTransferClientDlg.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\FileWriteModel.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\Format.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\Model.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\Tray.cpp"
+"D:\Project\FileTransfer\Src\Protocol\Model\ValidJudge.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP589.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP58A.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/FileTransferClient.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Project\FileTransfer\Src\FileTransferClient\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP58A.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP58B.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/FileTransferClient.pdb" /debug /machine:I386 /out:"Debug/FileTransferClient.exe" /pdbtype:sept 
+.\Debug\ClientControl.obj
+.\Debug\ClientModel.obj
+.\Debug\ConfigFile.obj
+.\Debug\Control.obj
+.\Debug\FileModel.obj
+.\Debug\FileTransferClient.obj
+.\Debug\FileTransferClientDlg.obj
+.\Debug\FileWriteModel.obj
+.\Debug\Format.obj
+.\Debug\Model.obj
+.\Debug\StdAfx.obj
+.\Debug\Tray.obj
+.\Debug\ValidJudge.obj
+.\Debug\FileTransferClient.res
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP58B.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ClientControl.cpp
+ClientModel.cpp
+ConfigFile.cpp
+Control.cpp
+FileModel.cpp
+FileTransferClient.cpp
+FileTransferClientDlg.cpp
+FileWriteModel.cpp
+Format.cpp
+Model.cpp
+Tray.cpp
+ValidJudge.cpp
+Generating Code...
+Linking...
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP58D.tmp" with contents
+[
+/nologo /o"Debug/FileTransferClient.bsc" 
+.\Debug\StdAfx.sbr
+.\Debug\ClientControl.sbr
+.\Debug\ClientModel.sbr
+.\Debug\ConfigFile.sbr
+.\Debug\Control.sbr
+.\Debug\FileModel.sbr
+.\Debug\FileTransferClient.sbr
+.\Debug\FileTransferClientDlg.sbr
+.\Debug\FileWriteModel.sbr
+.\Debug\Format.sbr
+.\Debug\Model.sbr
+.\Debug\Tray.sbr
+.\Debug\ValidJudge.sbr]
+Creating command line "bscmake.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP58D.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+FileTransferClient.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
