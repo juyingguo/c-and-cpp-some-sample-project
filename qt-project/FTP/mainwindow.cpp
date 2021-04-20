@@ -85,14 +85,15 @@ bool MainWindow::initFTP()
 ***********************************************************************************************/
 void MainWindow::replyFinished(QNetworkReply*)
 {
+    qDebug()<<"replyFinished:" << reply->error();
     if (reply->error() == QNetworkReply::NoError) {
             reply->deleteLater();
             file->flush();
             file->close();
-        }
-        else {
-            QMessageBox::critical(NULL, tr("Error"), "错误!!!");
-        }
+    }
+    else {
+        QMessageBox::critical(NULL, tr("Error"), "错误!!!");
+    }
 }
 
 /***********************************************************************************************
@@ -111,7 +112,7 @@ void MainWindow::replyFinished(QNetworkReply*)
 void MainWindow::loadProgress(qint64 bytesSent, qint64 bytesTotal)
 {
     ui->progressBar->setValue(0);
-    qDebug() << "loaded" << bytesSent << "of" << bytesTotal;
+//    qDebug() << "loaded" << bytesSent << "of" << bytesTotal;
     ui->progressBar->setMaximum(bytesTotal); //最大值
     ui->progressBar->setValue(bytesSent);  //当前值
     double currentProgress = (bytesSent - ui->progressBar->minimum()) * 100.0 / (bytesTotal - ui->progressBar->minimum());
@@ -163,9 +164,11 @@ QString MainWindow::getFileName(QString m_filePath)
 ***********************************************************************************************/
 void MainWindow::replyError(QNetworkReply::NetworkError error)
 {
+    qDebug()<<"replyError error:" << error;//直接打印，qt已经转化为字符串了。
     auto metaEnum = QMetaEnum::fromType<QNetworkReply::NetworkError>();
     //枚举值转换为字符串
     auto errStr = metaEnum.valueToKey(error);
+    qDebug()<<"replyError:" << QString(errStr);
     QMessageBox::critical(NULL, tr("Error"), QString(errStr));
 
     file->deleteLater();
@@ -225,16 +228,16 @@ void MainWindow::on_Btn_download_clicked()
     if (initFTP()) {
         QString folderPath;
         folderPath = QFileDialog::getExistingDirectory(this, tr("选择文件"), "", QFileDialog::ShowDirsOnly);
-        file = new QFile(folderPath + "/test.jpg");
+        file = new QFile(folderPath + "/1-arm-brief-introduction.wmv");
         file->open(QIODevice::WriteOnly);
 
         //从服务器上下载文件到选中文件夹
         QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
         accessManager->setNetworkAccessible(QNetworkAccessManager::Accessible);
-        QUrl url("ftp://192.168.43.129/software/timg.jpeg");
+        QUrl url("ftp://192.168.1.70/ftpdir/1-arm-brief-introduction.wmv");
         url.setPort(21);
-        url.setUserName("jinxiaodan");
-        url.setPassword("abcd1234");
+        url.setUserName("eink");
+        url.setPassword("123");
 
         QNetworkRequest request(url);
         reply = accessManager->get(request);
