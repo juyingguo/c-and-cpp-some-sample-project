@@ -65,6 +65,7 @@ int ftp_recv(SOCKET sock, char *re_buf, size_t *len); //获取响应码
  * */
 SOCKET socket_connect(char *host, int port)
 {
+	printf("socket_connect enter.\n");
 	int i = 0;
 	//初始化 Socket dll
 	WSADATA wsaData;
@@ -88,7 +89,7 @@ SOCKET socket_connect(char *host, int port)
 
 	ret1 = getaddrinfo(host,NULL, &hints, &res);
 	if (ret1 == -1) {
-		perror("getaddrinfo");
+		perror("socket_connect() getaddrinfo");
 		exit(1);
 	}
 	for (cur = res; cur != NULL; cur = cur->ai_next) {
@@ -98,7 +99,7 @@ SOCKET socket_connect(char *host, int port)
 			(*addr).sin_addr.S_un.S_un_b.s_b2,
 			(*addr).sin_addr.S_un.S_un_b.s_b3,
 			(*addr).sin_addr.S_un.S_un_b.s_b4);
-		printf("%s\n", m_ipaddr);
+		printf("socket_connect m_ipaddr  = %s\n", m_ipaddr);
 	}
 
 	//struct hostent * server = gethostbyname(host);
@@ -119,7 +120,7 @@ SOCKET socket_connect(char *host, int port)
 	SOCKET s = socket(AF_INET, SOCK_STREAM, 0); //TCP socket
 	if (SOCKET_ERROR == s)
 	{
-		printf("Create Socket Error!");
+		printf("socket_connect,Create Socket Error!");
 		exit(1);
 	}
 	//设置超时连接
@@ -150,6 +151,7 @@ SOCKET socket_connect(char *host, int port)
  * */
 SOCKET connect_server(char *host, int port)
 {
+	printf("connect_server enter.\n");
 	SOCKET ctrl_sock;
 	char buf[BUFSIZE];
 	int result;
@@ -164,7 +166,7 @@ SOCKET connect_server(char *host, int port)
 	{
 		//len = recv(ctrl_sock, buf, BUFSIZE, 0);
 		buf[len] = 0;
-		printf("%s\n", buf); 
+		printf("connect_server %s\n", buf); 
 	}
 	sscanf_s(buf, "%d", &result);
 
@@ -280,6 +282,7 @@ void socket_close(int c_sock)
  * */
 SOCKET ftp_connect(char *host, int port, char *user, char *pwd)
 {
+	printf("ftp_connect enter.\n");
 	SOCKET sock;
 	sock = connect_server(host, port);
 	if (-1 == sock)
