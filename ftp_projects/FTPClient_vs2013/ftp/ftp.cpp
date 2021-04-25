@@ -120,7 +120,7 @@ SOCKET socket_connect(char *host, int port)
 	SOCKET s = socket(AF_INET, SOCK_STREAM, 0); //TCP socket
 	if (SOCKET_ERROR == s)
 	{
-		printf("socket_connect,Create Socket Error!");
+		printf("socket_connect,socket_connect,Create Socket Error!");
 		exit(1);
 	}
 	//设置超时连接
@@ -138,7 +138,7 @@ SOCKET socket_connect(char *host, int port)
 	//连接
 	if (SOCKET_ERROR == connect(s, (LPSOCKADDR)&address, sizeof(address)))
 	{
-		printf("Can Not Connect To Server IP!\n");
+		printf("socket_connect,Can Not Connect To Server IP!\n");
 		exit(1);
 	}
 	return s;
