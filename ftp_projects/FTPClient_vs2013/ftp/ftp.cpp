@@ -671,6 +671,7 @@ int ftp_local2server(SOCKET c_sock, char *s, char *d, int * size)
 
 int main()
 {
+	bool socket_ok = false;
 	SOCKET s;
 	string cmd;
 	string arg1,arg2,arg3,arg4;
@@ -685,12 +686,18 @@ int main()
 			char *pwd = (char *)(arg4.c_str());
 			s = ftp_connect(host, 21, user, pwd);
 			cout << "\n\n";
-			if (-1 == s)
+			if (-1 == s){
 				cout << "status:-1\n";
-			else cout << "status:0\n";
-			continue;
+			}else{
+				cout << "status:0\n";
+				socket_ok = true;
+			}
 		}
 		else if (cmd == "quit") {
+			if (socket_ok != true){
+				cout << "socket is not create." <<"\n";
+				break;
+			}
 			int status=ftp_quit(s);
 			cout << "\n\n";
 			cout << "status:" << status << "\n";
@@ -702,7 +709,6 @@ int main()
 			int status=ftp_mkd(s, path);
 			cout << "\n\n";
 			cout << "status:" << status << "\n";
-
 		}else if(cmd=="list") {
 			cin >> arg1;
 			char *path = (char *)(arg1.c_str());
@@ -716,7 +722,7 @@ int main()
 			if (0 == status)
 				cout << "status:0\n";
 			else cout << "status:-1\n";
-
+			
 		}
 		else if (cmd == "delfolder") {
 			cin >> arg1;
@@ -724,6 +730,7 @@ int main()
 			int status=ftp_deletefolder(s, path);
 			cout << "\n\n";
 			cout << "status:" << status << "\n";
+			
 		}
 		else if (cmd == "delfile") {
 			cin >> arg1;
@@ -731,6 +738,7 @@ int main()
 			int status =ftp_deletefile(s, path);
 			cout << "\n\n";
 			cout << "status:" << status << "\n";
+			
 		}
 		else if (cmd == "rename") {
 			cin >> arg1 >> arg2;
@@ -739,6 +747,7 @@ int main()
 			int status=ftp_renamefile(s, oldname, newname);
 			cout << "\n\n";
 			cout << "status:" << status << "\n";
+			
 		}
 		else if (cmd == "server2local") {
 			cin >> arg1 >> arg2 ;
@@ -748,8 +757,9 @@ int main()
 			int status = ftp_server2local(s,source,dst,&size);
 			cout << "\n\n";
 			cout << "status:" << status << "\n";
+			
 		}
-		else if (cmd == "local2lserver") {
+		else if (cmd == "local2server") {
 			cin >> arg1 >> arg2;
 			char *source = (char *)(arg1.c_str());
 			char *dst = (char *)(arg2.c_str());
@@ -757,6 +767,7 @@ int main()
 			int status = ftp_local2server(s, source, dst, &size);
 			cout << "\n\n";
 			cout << "status:" << status << "\n";
+			
 		}
 	}
 }
