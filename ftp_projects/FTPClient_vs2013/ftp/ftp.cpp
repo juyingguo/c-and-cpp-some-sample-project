@@ -73,7 +73,8 @@ SOCKET socket_connect(char *host, int port)
 	if (WSAStartup(socketVersion, &wsaData))
 	{
 		printf("Init socket dll error!");
-		exit(1);
+		//exit(1);
+		return -1;
 	}
 
 	struct addrinfo hints;
@@ -90,7 +91,8 @@ SOCKET socket_connect(char *host, int port)
 	ret1 = getaddrinfo(host,NULL, &hints, &res);
 	if (ret1 == -1) {
 		perror("socket_connect() getaddrinfo");
-		exit(1);
+		//exit(1);
+		return -1;
 	}
 	for (cur = res; cur != NULL; cur = cur->ai_next) {
 		addr = (struct sockaddr_in *)cur->ai_addr;
@@ -121,7 +123,8 @@ SOCKET socket_connect(char *host, int port)
 	if (SOCKET_ERROR == s)
 	{
 		printf("socket_connect,socket_connect,Create Socket Error!");
-		exit(1);
+		//exit(1);
+		return -1;
 	}
 	//设置超时连接
 	int timeout = 3000; //复杂的网络环境要设置超时判断
@@ -139,7 +142,8 @@ SOCKET socket_connect(char *host, int port)
 	if (SOCKET_ERROR == connect(s, (LPSOCKADDR)&address, sizeof(address)))
 	{
 		printf("socket_connect,Can Not Connect To Server IP!\n");
-		exit(1);
+		//exit(1);
+		return -1;
 	}
 	return s;
 }
@@ -692,6 +696,7 @@ int main()
 				cout << "status:0\n";
 				socket_ok = true;
 			}
+			continue;
 		}
 		else if (cmd == "quit") {
 			if (socket_ok != true){
