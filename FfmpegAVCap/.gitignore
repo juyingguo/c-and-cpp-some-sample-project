@@ -1,0 +1,18 @@
+*.o
+*.exe
+/Debug
+/obj
+#/bin
+
+#visual studio project ignore file 
+ipch/
+*.suo
+*.sdf
+*.opensdf
+#qt project generate file : xxx.pro.user
+*.pro.user
+#ignore qt generate file : build-FTP-Desktop_Qt_5_9_0_MinGW_32bit-Debug
+build-*-Debug/
+build-*-Release/
+Debug
+Release
