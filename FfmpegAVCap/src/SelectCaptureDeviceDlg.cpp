@@ -1,5 +1,6 @@
 // SelectCaptureDeviceDlg.cpp : 实现文件
 //
+#include "stdio.h"
 
 #include "stdafx.h"
 #include "Resource.h"
@@ -318,6 +319,7 @@ void CSelectCaptureDeviceDlg::OnBnClickedOk()
 
 void CSelectCaptureDeviceDlg::OnBnClickedBtnsave()
 {
+	printf("CSelectCaptureDeviceDlg::OnBnClickedBtnsave() enter.\n");
 	camdes[0]='\0';
 	micdes[0]='\0';
 
@@ -354,6 +356,7 @@ void CSelectCaptureDeviceDlg::OnBnClickedBtnsave()
 
 void CSelectCaptureDeviceDlg::OnBnClickedButton2()
 {
+	printf("CSelectCaptureDeviceDlg::OnBnClickedButton2() enter.\n");
 	CString strResult =""; 
 	LPMALLOC lpMalloc;  // pointer to IMalloc 
 	if (::SHGetMalloc(&lpMalloc) != NOERROR) 
