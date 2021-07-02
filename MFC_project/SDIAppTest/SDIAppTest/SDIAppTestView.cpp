@@ -1,11 +1,11 @@
 
-// SDIAppTestView.cpp : CSDIAppTestView ç±»çš„å®ç°
+// SDIAppTestView.cpp : CSDIAppTestView ÀàµÄÊµÏÖ
 //
 
 #include "stdafx.h"
 #include "stdio.h"
-// SHARED_HANDLERS å¯ä»¥åœ¨å®ç°é¢„è§ˆã€ç¼©ç•¥å›¾å’Œæœç´¢ç­›é€‰å™¨å¥æŸ„çš„
-// ATL é¡¹ç›®ä¸­è¿›è¡Œå®šä¹‰ï¼Œå¹¶å…è®¸ä¸è¯¥é¡¹ç›®å…±äº«æ–‡æ¡£ä»£ç ã€‚
+// SHARED_HANDLERS ¿ÉÒÔÔÚÊµÏÖÔ¤ÀÀ¡¢ËõÂÔÍ¼ºÍËÑË÷É¸Ñ¡Æ÷¾ä±úµÄ
+// ATL ÏîÄ¿ÖĞ½øĞĞ¶¨Òå£¬²¢ÔÊĞíÓë¸ÃÏîÄ¿¹²ÏíÎÄµµ´úÂë¡£
 #ifndef SHARED_HANDLERS
 #include "SDIAppTest.h"
 #endif
@@ -23,7 +23,7 @@
 IMPLEMENT_DYNCREATE(CSDIAppTestView, CView)
 
 BEGIN_MESSAGE_MAP(CSDIAppTestView, CView)
-	// æ ‡å‡†æ‰“å°å‘½ä»¤
+	// ±ê×¼´òÓ¡ÃüÁî
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CSDIAppTestView::OnFilePrintPreview)
@@ -31,11 +31,11 @@ BEGIN_MESSAGE_MAP(CSDIAppTestView, CView)
 	ON_WM_RBUTTONUP()
 END_MESSAGE_MAP()
 
-// CSDIAppTestView æ„é€ /ææ„
+// CSDIAppTestView ¹¹Ôì/Îö¹¹
 
 CSDIAppTestView::CSDIAppTestView()
 {
-	// TODO:  åœ¨æ­¤å¤„æ·»åŠ æ„é€ ä»£ç 
+	// TODO:  ÔÚ´Ë´¦Ìí¼Ó¹¹Ôì´úÂë
 	printf("CSDIAppTestView::CSDIAppTestView() enter.\n");
 	InitRect();
 	InitPen();
@@ -47,13 +47,13 @@ CSDIAppTestView::~CSDIAppTestView()
 
 BOOL CSDIAppTestView::PreCreateWindow(CREATESTRUCT& cs)
 {
-	// TODO:  åœ¨æ­¤å¤„é€šè¿‡ä¿®æ”¹
-	//  CREATESTRUCT cs æ¥ä¿®æ”¹çª—å£ç±»æˆ–æ ·å¼
+	// TODO:  ÔÚ´Ë´¦Í¨¹ıĞŞ¸Ä
+	//  CREATESTRUCT cs À´ĞŞ¸Ä´°¿ÚÀà»òÑùÊ½
 
 	return CView::PreCreateWindow(cs);
 }
 
-// CSDIAppTestView ç»˜åˆ¶
+// CSDIAppTestView »æÖÆ
 
 void CSDIAppTestView::OnDraw(CDC* /*pDC*/)
 {
@@ -62,15 +62,15 @@ void CSDIAppTestView::OnDraw(CDC* /*pDC*/)
 	if (!pDoc)
 		return;
 
-	// TODO:  åœ¨æ­¤å¤„ä¸ºæœ¬æœºæ•°æ®æ·»åŠ ç»˜åˆ¶ä»£ç 
+	// TODO:  ÔÚ´Ë´¦Îª±¾»úÊı¾İÌí¼Ó»æÖÆ´úÂë
 	printf("CSDIAppTestView::OnDraw().\n");
 
-	//é‡‡ç”¨GDIç»˜å›¾
+	//²ÉÓÃGDI»æÍ¼
 	CClientDC cdc(this);
 	CPen* pOldPen = NULL;
 	for (int i = 0; i<1; i++)
 	{
-		//æŠŠå½“å‰çš„ç”»ç¬”é€‰å…¥DC
+		//°Ñµ±Ç°µÄ»­±ÊÑ¡ÈëDC
 		pOldPen = cdc.SelectObject(&m_myEclipse[i].pen);
 		cdc.Ellipse(m_myEclipse[i].rect);
 		cdc.SelectObject(pOldPen);
@@ -79,15 +79,15 @@ void CSDIAppTestView::OnDraw(CDC* /*pDC*/)
 
 void CSDIAppTestView::InitRect()
 {
-    //ç•Œé¢ä¸Šè¦æ˜¾ç¤º8ä¸ªå›¾å½¢ï¼Œå‡†å¤‡å¥½8ä¸ªåŒºåŸŸï¼Œåˆ†ä¸¤è¡Œæ˜¾ç¤ºï¼Œæ¯ä¸€è¡Œæ˜¾ç¤ºå››ä¸ª
-    //å›¾å½¢å·¦å³é—´éš”10ä¸ªåƒç´ ï¼Œä¸Šä¸‹é—´éš”20ä¸ªåƒç´ 
-    //å·¦ä¸Š å³ä¸‹
+    //½çÃæÉÏÒªÏÔÊ¾8¸öÍ¼ĞÎ£¬×¼±¸ºÃ8¸öÇøÓò£¬·ÖÁ½ĞĞÏÔÊ¾£¬Ã¿Ò»ĞĞÏÔÊ¾ËÄ¸ö
+    //Í¼ĞÎ×óÓÒ¼ä¸ô10¸öÏñËØ£¬ÉÏÏÂ¼ä¸ô20¸öÏñËØ
+    //×óÉÏ ÓÒÏÂ
     CRect rect(0,0,100,100);
     for (int i=0;i<8;i++)
     {
         if (i<4)
         {
-            //ç¬¬ä¸€è¡Œå›¾å½¢
+            //µÚÒ»ĞĞÍ¼ĞÎ
             CRect rect;
             rect.left=20+i*150;
             rect.top=20;
@@ -98,7 +98,7 @@ void CSDIAppTestView::InitRect()
         }
         else
         {
-            //ç¬¬äºŒè¡Œå›¾å½¢
+            //µÚ¶şĞĞÍ¼ĞÎ
             CRect rect;
             rect.left=20+(i-4)*150;
             rect.top=250;
@@ -112,7 +112,7 @@ void CSDIAppTestView::InitRect()
 }
 void CSDIAppTestView::InitPen()
 {
-	//åˆ›å»ºæ™®é€šç”»ç¬”
+	//´´½¨ÆÕÍ¨»­±Ê
 	m_myEclipse[0].pen.CreatePen(PS_SOLID, 10, RGB(255, 0, 0));
 	m_myEclipse[1].pen.CreatePen(PS_DASH, 5, RGB(0, 255, 0));
 	m_myEclipse[2].pen.CreatePen(PS_DOT, 1, RGB(0, 0, 255));
@@ -121,7 +121,7 @@ void CSDIAppTestView::InitPen()
 	m_myEclipse[5].pen.CreatePen(PS_NULL, 1, RGB(0, 255, 255));
 	m_myEclipse[6].pen.CreatePen(PS_INSIDEFRAME, 10, RGB(0, 255, 255));
 
-	//åˆ›å»ºé›†åˆç”»ç¬”
+	//´´½¨¼¯ºÏ»­±Ê
 	LOGBRUSH LogBrush;
 	LogBrush.lbStyle = BS_HATCHED;
 	LogBrush.lbColor = RGB(0, 0, 255);
@@ -130,7 +130,7 @@ void CSDIAppTestView::InitPen()
 }
 
 
-// CSDIAppTestView æ‰“å°
+// CSDIAppTestView ´òÓ¡
 
 
 void CSDIAppTestView::OnFilePrintPreview()
@@ -142,18 +142,18 @@ void CSDIAppTestView::OnFilePrintPreview()
 
 BOOL CSDIAppTestView::OnPreparePrinting(CPrintInfo* pInfo)
 {
-	// é»˜è®¤å‡†å¤‡
+	// Ä¬ÈÏ×¼±¸
 	return DoPreparePrinting(pInfo);
 }
 
 void CSDIAppTestView::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 {
-	// TODO:  æ·»åŠ é¢å¤–çš„æ‰“å°å‰è¿›è¡Œçš„åˆå§‹åŒ–è¿‡ç¨‹
+	// TODO:  Ìí¼Ó¶îÍâµÄ´òÓ¡Ç°½øĞĞµÄ³õÊ¼»¯¹ı³Ì
 }
 
 void CSDIAppTestView::OnEndPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 {
-	// TODO:  æ·»åŠ æ‰“å°åè¿›è¡Œçš„æ¸…ç†è¿‡ç¨‹
+	// TODO:  Ìí¼Ó´òÓ¡ºó½øĞĞµÄÇåÀí¹ı³Ì
 }
 
 void CSDIAppTestView::OnRButtonUp(UINT /* nFlags */, CPoint point)
@@ -170,7 +170,7 @@ void CSDIAppTestView::OnContextMenu(CWnd* /* pWnd */, CPoint point)
 }
 
 
-// CSDIAppTestView è¯Šæ–­
+// CSDIAppTestView Õï¶Ï
 
 #ifdef _DEBUG
 void CSDIAppTestView::AssertValid() const
@@ -183,7 +183,7 @@ void CSDIAppTestView::Dump(CDumpContext& dc) const
 	CView::Dump(dc);
 }
 
-CSDIAppTestDoc* CSDIAppTestView::GetDocument() const // éè°ƒè¯•ç‰ˆæœ¬æ˜¯å†…è”çš„
+CSDIAppTestDoc* CSDIAppTestView::GetDocument() const // ·Çµ÷ÊÔ°æ±¾ÊÇÄÚÁªµÄ
 {
 	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CSDIAppTestDoc)));
 	return (CSDIAppTestDoc*)m_pDocument;
@@ -191,4 +191,4 @@ CSDIAppTestDoc* CSDIAppTestView::GetDocument() const // éè°ƒè¯•ç‰ˆæœ¬æ˜¯å†…è”
 #endif //_DEBUG
 
 
-// CSDIAppTestView æ¶ˆæ¯å¤„ç†ç¨‹åº
+// CSDIAppTestView ÏûÏ¢´¦Àí³ÌĞò

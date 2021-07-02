@@ -1,5 +1,5 @@
 
-// SDIAppTestView.h : CSDIAppTestView ç±»çš„æ¥å£
+// SDIAppTestView.h : CSDIAppTestView ÀàµÄ½Ó¿Ú
 //
 
 #pragma once
@@ -7,35 +7,35 @@
 
 class CSDIAppTestView : public CView
 {
-protected: // ä»…ä»åºåˆ—åŒ–åˆ›å»º
+protected: // ½ö´ÓĞòÁĞ»¯´´½¨
 	CSDIAppTestView();
 	DECLARE_DYNCREATE(CSDIAppTestView)
 
-// ç‰¹æ€§
+// ÌØĞÔ
 public:
 	CSDIAppTestDoc* GetDocument() const;
 
-// æ“ä½œ
+// ²Ù×÷
 public:
 	struct my_Eclipse{
-		CRect rect;  //å›¾å½¢æ˜¾ç¤ºåŒºåŸŸ
-		CPen pen;  //ç”»ç¬”
+		CRect rect;  //Í¼ĞÎÏÔÊ¾ÇøÓò
+		CPen pen;  //»­±Ê
 	};
-	//å®šä¹‰8ä¸ªç»“æ„ï¼Œç”¨äºç»˜åˆ¶8ä¸ªå›¾å½¢
+	//¶¨Òå8¸ö½á¹¹£¬ÓÃÓÚ»æÖÆ8¸öÍ¼ĞÎ
 	my_Eclipse  m_myEclipse[8];
 	void InitRect();
 	void InitPen();
 
 public:
-// é‡å†™
-	virtual void OnDraw(CDC* pDC);  // é‡å†™ä»¥ç»˜åˆ¶è¯¥è§†å›¾
+// ÖØĞ´
+	virtual void OnDraw(CDC* pDC);  // ÖØĞ´ÒÔ»æÖÆ¸ÃÊÓÍ¼
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 protected:
 	virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
 	virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
 	virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 
-// å®ç°
+// ÊµÏÖ
 public:
 	virtual ~CSDIAppTestView();
 #ifdef _DEBUG
@@ -45,7 +45,7 @@ public:
 
 protected:
 
-// ç”Ÿæˆçš„æ¶ˆæ¯æ˜ å°„å‡½æ•°
+// Éú³ÉµÄÏûÏ¢Ó³Éäº¯Êı
 protected:
 	afx_msg void OnFilePrintPreview();
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
@@ -53,7 +53,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 };
 
-#ifndef _DEBUG  // SDIAppTestView.cpp ä¸­çš„è°ƒè¯•ç‰ˆæœ¬
+#ifndef _DEBUG  // SDIAppTestView.cpp ÖĞµÄµ÷ÊÔ°æ±¾
 inline CSDIAppTestDoc* CSDIAppTestView::GetDocument() const
    { return reinterpret_cast<CSDIAppTestDoc*>(m_pDocument); }
 #endif
