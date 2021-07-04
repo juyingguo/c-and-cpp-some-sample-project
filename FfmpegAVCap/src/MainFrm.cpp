@@ -92,8 +92,8 @@ END_MESSAGE_MAP()
 
 CMainFrame::CMainFrame()
 {
+	printf("CMainFrame::CMainFrame().\n");
 	gpMainFrame = this;
-   
 	m_bPreview  = TRUE;
 	m_nFPS = 0;
 		                 
@@ -147,6 +147,7 @@ CMainFrame::~CMainFrame()
 
 int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
+	printf("CMainFrame::OnCreate().\n");
 	if (CFrameWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
@@ -239,6 +240,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 UINT __stdcall CMainFrame::ThreadRecordControl(LPVOID pParameter)
 {
+	printf("CMainFrame::ThreadRecordControl() enter.\n");
 	HANDLE hHandle[5];
 	int handnum;
 
@@ -294,6 +296,7 @@ UINT __stdcall CMainFrame::ThreadRecordControl(LPVOID pParameter)
 		}
 		if(hHandle[index-WAIT_OBJECT_0]==m_hBeginRecord)
 		{
+			printf("CMainFrame::ThreadRecordControl,m_hBeginRecord come.\n");
 			ResetEvent(hHandle[index-WAIT_OBJECT_0]);
 			::SendMessage(MyWnd,MESSAGE_START_RECORD,0,0);
 			continue;
@@ -415,7 +418,7 @@ void CMainFrame::OnClickMenu(UINT uMenuId)
 		}
 		break;
 
-		case IDM_SEL_DEVICE: //选择设备
+		case IDM_SEL_DEVICES: //选择设备
 		{
 			selflag=0;
 			CSelectCaptureDeviceDlg dlg;
@@ -492,6 +495,7 @@ void CMainFrame::OnTimer(UINT nIDEvent)
 
 LRESULT  CMainFrame:: OnStartStream(WPARAM wParam, LPARAM lParam)
 {
+	printf("CMainFrame::OnStartStream enter\n");
 	m_InputStream.SetVideoCaptureCB(VideoCaptureCallback);
 	m_InputStream.SetAudioCaptureCB(AudioCaptureCallback);
 
@@ -509,6 +513,7 @@ LRESULT  CMainFrame:: OnStartStream(WPARAM wParam, LPARAM lParam)
 
 	if(m_InputStream.GetVideoInputInfo(cx, cy, ifps, pixel_fmt)) //获取视频采集源的信息
 	{
+		printf("CMainFrame::OnStartStream,call GetVideoInputInfo after,cx=%d,cy=%d,ifps=%d\n", cx, cy, ifps);
 		m_OutputStream.SetVideoCodecProp(AV_CODEC_ID_H264, ifps, 500000, 100, cx, cy); //设置视频编码器属性
 	}
 
@@ -517,6 +522,7 @@ LRESULT  CMainFrame:: OnStartStream(WPARAM wParam, LPARAM lParam)
 
 	if(m_InputStream.GetAudioInputInfo(sample_fmt, sample_rate, channels)) //获取音频采集源的信息
 	{
+		printf("CMainFrame::OnStartStream,call GetAudioInputInfo after,sample_fmt=%s,sample_rate=%d,channels=%d\n", av_get_sample_fmt_name(sample_fmt), sample_rate, channels);
 		m_OutputStream.SetAudioCodecProp(AV_CODEC_ID_AAC, sample_rate, channels, 32000); //设置音频编码器属性
 	}
 
@@ -538,7 +544,7 @@ LRESULT  CMainFrame:: OnStartStream(WPARAM wParam, LPARAM lParam)
 
 	m_frmCount = 0;
 	m_nFPS = 0;
-
+	printf("CMainFrame::OnStartStream end.\n");
 	return 0;
 }
 
@@ -557,6 +563,7 @@ LRESULT  CMainFrame:: OnStopStream(WPARAM wParam, LPARAM lParam)
 //采集到的视频图像回调
 LRESULT CALLBACK VideoCaptureCallback(AVStream * input_st, enum PixelFormat pix_fmt, AVFrame *pframe, INT64 lTimeStamp)
 {
+	printf("CMainFrame-VideoCaptureCallback enter.\n");
 	if(gpMainFrame->IsPreview())
 	{
 	   gpMainFrame->m_Painter.Play(input_st, pframe);
@@ -569,6 +576,7 @@ LRESULT CALLBACK VideoCaptureCallback(AVStream * input_st, enum PixelFormat pix_
 //采集到的音频数据回调
 LRESULT CALLBACK AudioCaptureCallback(AVStream * input_st, AVFrame *pframe, INT64 lTimeStamp)
 {
+	printf("CMainFrame-AudioCaptureCallback enter.\n");
 	gpMainFrame->m_OutputStream.write_audio_frame(input_st, pframe, lTimeStamp);
 	return 0;
 }
@@ -576,9 +584,10 @@ LRESULT CALLBACK AudioCaptureCallback(AVStream * input_st, AVFrame *pframe, INT6
 LRESULT CMainFrame::StartRec(WPARAM wParam, LPARAM lParam)
 {
 	if(m_bNeedRecord) return 0;
-
+	printf("CMainFrame::StartRec enter\n");
 	m_bNeedRecord = TRUE;
 
+	printf("CMainFrame::StartRec camdes = %s,micdes = %s\n", camdes, micdes);
 	m_InputStream.SetVideoCaptureDevice(camdes);
 	m_InputStream.SetAudioCaptureDevice(micdes);
 

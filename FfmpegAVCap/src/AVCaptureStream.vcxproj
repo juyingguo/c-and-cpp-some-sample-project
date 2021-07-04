@@ -146,7 +146,7 @@
       <OutputFile>.\Debug/ScreenRecv.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command> editbin /SUBSYSTEM:CONSOLE $(OUTDIR)$(ProjectName).exe</Command>
+      <Command>editbin /SUBSYSTEM:CONSOLE $(OUTDIR)$(ProjectName).exe </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -79,6 +79,7 @@ void CAVOutputStream::SetAudioCodecProp(AVCodecID codec_id, int samplerate, int 
 //创建编码器和混合器
 bool CAVOutputStream::OpenOutputStream(const char* out_path)
 {
+	printf("CAVOutputStream::OpenOutputStream out_path = %s\n", out_path);
 	m_output_path = out_path;
 
 	//output initialize
@@ -227,11 +228,11 @@ bool CAVOutputStream::OpenOutputStream(const char* out_path)
 //input_st -- 输入流的信息
 //input_frame -- 输入视频帧的信息
 //lTimeStamp -- 时间戳，时间单位为1/1000000
-//
 int CAVOutputStream::write_video_frame(AVStream * input_st, enum PixelFormat pix_fmt, AVFrame *pframe, INT64 lTimeStamp)
 {
 	if(video_st == NULL) return -1;
 
+	printf("CAVOutputStream::write_video_frame,pix_fmt=%d,lTimeStamp = %ld\n", pix_fmt, lTimeStamp);
 
    if(m_first_vid_time1 == -1) m_first_vid_time1 = lTimeStamp;
 
@@ -239,6 +240,7 @@ int CAVOutputStream::write_video_frame(AVStream * input_st, enum PixelFormat pix
 
 	if(img_convert_ctx == NULL)
 	{
+		printf("CAVOutputStream::write_video_frame,img_convert_ctx == NULL\n");
 		//camera data may has a pix fmt of RGB or sth else,convert it to YUV420
 		img_convert_ctx = sws_getContext(m_width, m_height,
 			pix_fmt, pCodecCtx->width, pCodecCtx->height, PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);

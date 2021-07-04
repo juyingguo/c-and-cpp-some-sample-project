@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by NSPlayer.rc
+// Microsoft Visual C++ 生成的包含文件。
+// 供 NSPlayer.rc 使用
 //
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
@@ -36,13 +36,16 @@
 #define IDM_PREVIEW_VIDEO               32772
 #define IDM_SET_NOBORDER                32773
 #define IDM_SEL_DEVICE                  32814
+#define ID_SEL_DEVICES                  32815
+#define IDM_SEPARATOR                   32816
+#define IDM_SEL_DEVICES                 32817
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        133
-#define _APS_NEXT_COMMAND_VALUE         32815
+#define _APS_NEXT_COMMAND_VALUE         32818
 #define _APS_NEXT_CONTROL_VALUE         1014
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

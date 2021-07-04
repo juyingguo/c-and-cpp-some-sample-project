@@ -1,5 +1,6 @@
 
 #include "stdafx.h"
+#include "stdio.h"
 #include "AVInputStream.h"
 
 static std::string AnsiToUTF8(const char *_ansi, int _ansi_len)
@@ -118,10 +119,16 @@ bool  CAVInputStream::OpenInputStream()
 		string device_name_utf8 = AnsiToUTF8(device_name.c_str(), device_name.length());  //转成UTF-8，解决设备名称包含中文字符出现乱码的问题
 
 		 //Set own video device's name
-		if ((res = avformat_open_input(&m_pVidFmtCtx, device_name_utf8.c_str(), m_pInputFormat, &device_param)) != 0) return false;
+		if ((res = avformat_open_input(&m_pVidFmtCtx, device_name_utf8.c_str(), m_pInputFormat, &device_param)) != 0) {
+			printf("CAVInputStream::OpenInputStream() Couldn't open input video stream.（无法打开输入流）\n");
+			return false;
+		}
 
 		//input video initialize
-		if (avformat_find_stream_info(m_pVidFmtCtx, NULL) < 0) return false;
+		if (avformat_find_stream_info(m_pVidFmtCtx, NULL) < 0){
+			printf("CAVInputStream::OpenInputStream() Couldn't find video stream information.（无法获取流信息）\n");
+			return false;
+		}
 
 		m_videoindex = -1;
 		for (i = 0; i < (int)m_pVidFmtCtx->nb_streams; i++)
@@ -133,9 +140,16 @@ bool  CAVInputStream::OpenInputStream()
 			}
 		}
 
-		if (m_videoindex == -1) return false;
+		if (m_videoindex == -1)
+		{
+			printf("CAVInputStream::OpenInputStream() Couldn't find a video stream.（没有找到视频流）\n");
+			return false;
+		}
 
-		if (avcodec_open2(m_pVidFmtCtx->streams[m_videoindex]->codec, avcodec_find_decoder(m_pVidFmtCtx->streams[m_videoindex]->codec->codec_id), NULL) < 0) return false;
+		if (avcodec_open2(m_pVidFmtCtx->streams[m_videoindex]->codec, avcodec_find_decoder(m_pVidFmtCtx->streams[m_videoindex]->codec->codec_id), NULL) < 0){
+			printf("CAVInputStream::OpenInputStream() Couldn't find a video stream.（没有找到视频流）\n");			
+			return false;
+		}
 	}
 
     //////////////////////////////////////////////////////////
@@ -172,10 +186,13 @@ bool  CAVInputStream::OpenInputStream()
 
 bool  CAVInputStream::StartCapture()
 {
-	if (m_videoindex == -1 && m_audioindex == -1) return false;
-
-
+	printf("CAVInputStream::StartCapture() enter.\n");
+	if (m_videoindex == -1 && m_audioindex == -1) {		
+		return false;
+	}
+		
     m_start_time = av_gettime();
+	printf("CAVInputStream::StartCapture() m_start_time=%ld\n", m_start_time);
 
 	m_exit_thread = false;
 
@@ -244,6 +261,7 @@ void  CAVInputStream::CloseInputStream()
 
 DWORD WINAPI CAVInputStream::CaptureVideoThreadFunc(LPVOID lParam)
 {
+	printf("CAVInputStream::CaptureVideoThreadFunc() enter.\n");
 	CAVInputStream * pThis = (CAVInputStream*)lParam;
 
 	pThis->ReadVideoPackets();
@@ -253,6 +271,7 @@ DWORD WINAPI CAVInputStream::CaptureVideoThreadFunc(LPVOID lParam)
 
 int  CAVInputStream::ReadVideoPackets()
 {
+	printf("CAVInputStream::ReadVideoPackets() enter.\n");
 	if(dec_pkt == NULL)
 	{
 		////prepare before decode and encode
@@ -322,6 +341,7 @@ int  CAVInputStream::ReadVideoPackets()
 
 DWORD WINAPI CAVInputStream::CaptureAudioThreadFunc(LPVOID lParam)
 {
+	printf("CAVInputStream::CaptureAudioThreadFunc() enter.\n");
 	CAVInputStream * pThis = (CAVInputStream*)lParam;
 
 	pThis->ReadAudioPackets();
@@ -331,6 +351,7 @@ DWORD WINAPI CAVInputStream::CaptureAudioThreadFunc(LPVOID lParam)
 
 int CAVInputStream::ReadAudioPackets()
 {
+	printf("CAVInputStream::ReadAudioPackets() enter.\n");
 	//audio trancoding here
     int ret;
 

@@ -45,7 +45,6 @@ void CImagePainter::SetVideoWindow(HWND inWindow)
 // height -- 图像高度
 // bpp -- 图像的位深，默认为24
 // bReverseShow -- 是否颠倒显示图像，某些位图像素排列是颠倒的，需要把该参数设置为TRUE才能令图像正立显示
-//
 BOOL CImagePainter::SetSrcFormat(long width, long height, int bpp, BOOL bReverseShow)
 {
 	m_bmpInfo.bmiHeader.biBitCount = bpp;
